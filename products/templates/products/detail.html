@@ -1,0 +1,16 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+
+<h4> {{product.title}} </h4>
+<h5> {{product.details}} </h5>
+<h6> {{product.price}}</h6>
+<br>
+add to favorite
+<form action="/add-to-fav/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

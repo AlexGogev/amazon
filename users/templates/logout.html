@@ -1,0 +1,11 @@
+{% extends 'products/base.html' %}
+{% load bootstrap5 %}
+
+{% block content%}
+    <h2> You have been logged out </h2>
+    <div class="border-top pt-3">
+        <small> Log in again <a href={% url 'login' %}> Log In</a></small>
+    </div>
+
+{% endblock content %}
+

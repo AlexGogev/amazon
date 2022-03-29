@@ -1,0 +1,36 @@
+#add for password reset in settings.py
+
+import os
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "agogev.devteam"
+EMAIL_HOST_PASSWORD = os.environ["password"]
+
+INSTALLED_APPS - users
+
+#urls.py in main project
+
+urlpatterns = [
+    path("register/", user_view.register, name="register"),
+    path("login/", auth_views.LoginView.as_view(template_name="login.html"), name="login"),
+    path("logout/", auth_views.LogoutView.as_view(template_name="logout.html"), name="logout"),
+    # password reset
+    path("password-reset/", auth_views.PasswordResetView.as_view(template_name="password_reset.html"), name="password_reset"),
+    path("password-reset/done", auth_views.PasswordResetDoneView.as_view(template_name="password_reset_done.html"), name="password_reset_done"),
+    path("password-reset-confirm/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(template_name="password_reset_confirm.html"), name="password_reset_confirm"),
+    path("password-reset-complete/", auth_views.PasswordResetCompleteView.as_view(template_name="password_reset_complete.html"), name="password_reset_complete"),
+
+    # add in settings
+    # LOGIN_REDIRECT_URL ="blog-home"
+    # LOGIN_URL = "login"
+
+    # index.html navbar
+    # { % if user.is_authenticated %}
+    # <a class ="nav-item nav-link" href={% url 'profile' %} > {{user.username}} </a>
+    # <a class ="nav-item nav-link" href={% url 'logout' %} > Log Out </a>
+    # { % else %}
+    # <a class ="nav-item nav-link" href={% url 'login' %} > Log In </a>
+    # <a lass ="nav-item nav-link" href={% url 'register' %} > Register </a>
+    # { % endif %}
