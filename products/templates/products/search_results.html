@@ -1,0 +1,22 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+
+
+{% if object_list|length == 0 %}
+
+    <p> We don't have this product at the moment  </p>
+
+{% else %}
+<p>Here is your results</p>
+<ul>
+  {% for i in object_list %}
+    <li>
+      {{ i.title }}
+      {{ i.full_detail }}
+    </li>
+  {% endfor %}
+</ul>
+
+{% endif %}
+{% endblock %}

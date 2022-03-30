@@ -7,10 +7,6 @@
 <h6> {{product.price}}</h6>
 <br>
 add to favorite
-<form action="/add-to-fav/" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+
 
 {% endblock %}

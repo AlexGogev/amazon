@@ -1,14 +1,27 @@
 from django.shortcuts import render, HttpResponse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, TemplateView
 from django.contrib.auth.decorators import login_required
 from .models import Product
-from .forms import AddToFav
 
-class Listing(ListView):
+from django.db.models import Q
+
+class HomePageView(ListView):
+    template_name = 'products/index.html'
     model = Product
-    template_name = "products/index.html"
     context_object_name = "product"
+    def get_queryset(self): # new
+        return Product.objects.all()
 
+
+class SearchResultsView(ListView): #https://learndjango.com/tutorials/django-search-tutorial
+    model = Product
+    template_name = 'products/search_results.html'
+    def get_queryset(self): # new
+        query = self.request.GET.get("q")
+        object_list = Product.objects.filter(
+            Q(title__icontains=query) | Q(short_details__icontains=query) | Q(full_detail__icontains=query)
+        )
+        return object_list
 
 class Detail(DetailView):
     model = Product
@@ -16,11 +29,3 @@ class Detail(DetailView):
     context_object_name = "product"
 
 
-@login_required
-def add_to_fav(request):
-    if request.method == "POST":
-        form = AddToFav(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-    context = {"form": form}
-    return render(request, "products/detail.html", context)
