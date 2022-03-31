@@ -1,19 +1,21 @@
 {% extends 'products/base.html' %}
 
 {% block content %}
- <div class="container py-5">
-      <div class="row justify-content-center ">
+ <div class="container py-5 ">
+           <div class="row justify-content-center ">
+
 {% for i in product %}
 
+<div class="col-md-6 col-lg-3 col-xl-4 py-2 ">
 
 
-      <div class="col-md-6 col-lg-3 col-xl-4">
-        <div class="card text-black">
+        <div class="card text-black ">
 <!--          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>-->
           <img
             src="{{i.image}}"
-            class="card-img-top"
+            class="card-img-top w-75 img-fluid m-5"
             alt="Apple Computer"
+
           />
           <div class="card-body">
             <div class="text-center">
@@ -22,27 +24,27 @@
             </div>
             <div>
               <div class="d-flex justify-content-between">
-                <span>{{i.title}}</span><span>£{{i.price}}</span>
+                <span>{{i.title}}</span><span> Price £{{i.price}}</span>
               </div>
             </div>
-            <div class="d-flex justify-content-between total font-weight-bold mt-4">
-              <span>Total</span><span>$7,197.00</span>
-            </div>
-            <div class="d-flex justify-content-between ">
-                <span ><a href="{% url 'detail' i.pk %}">Full Detail</a></span>
+            <div class="row py-3">
+            <div class="col-6 ">
+                <span ><a href="{% url 'detail' i.pk %}"><button class="btn-detail"> Detail </button></a></span>
               </div>
+              <div class="col-6 text-end">
+                <span ><a href="{% url 'detail' i.pk %}"><button class="btn-detail"> Buy  </button></a></span>
+              </div>
+                </div>
           </div>
         </div>
-      </div>
 
-
-
+ </div>
 {% endfor %}
-              </div>
+
+
+
+    </div>
   </div>
 {% endblock %}
 
-<h4> {{i.title}} </h4>
-<h5> {{i.details}} </h5>
-<h6> {{i.price}}</h6>
-<a href="{% url 'detail' i.pk %}"> Detail</a>
+

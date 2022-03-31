@@ -2,11 +2,32 @@
 
 {% block content %}
 
-<h4> {{product.title}} </h4>
-<h5> {{product.details}} </h5>
-<h6> {{product.price}}</h6>
-<br>
-add to favorite
+
+<div class="container p-5 m-5">
+    <div class="row">
+        <div class="col-4">
+            <img class="img-fluid " src="{{product.image}}">
+        </div>
+        <div class="col-8 ps-5">
+            <p class="lead"> {{product.title}} </p>
+            <p class="fs-4"> {{product.short_details}} </p>
+            <p class="py-4 fs-5"> {{product.full_detail}} </p>
+            <p class=" fs-3 fw-normal">  Current Price £{{product.price}}</p>
+
+
+            <div class="row py-3 text-start" >
+            <div class="col-12 text-start">
+                <span ><a href=""><button class="btn-detail me-1"> Favorite </button></a></span>
+                <span ><a href=""><button class="btn-detail "> Buy  </button></a></span>
+              </div>
+
+                </div>
+        </div>
+    </div>
+
+</div>
+
+
 
 
 {% endblock %}
