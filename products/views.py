@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 from .models import Product
 
 from django.db.models import Q
@@ -27,5 +29,7 @@ class Detail(DetailView):
     model = Product
     template_name = "products/detail.html"
     context_object_name = "product"
+
+
 
 

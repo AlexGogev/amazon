@@ -1,0 +1,17 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<p> Hello {{user.username}}</p>
+<p> Here is your saved items</p>
+  {% for i in product %}
+<hr>
+  {{i.title}}
+
+<br>
+  {{i.short_details}}
+<hr>
+
+{% endfor %}
+
+
+{% endblock %}

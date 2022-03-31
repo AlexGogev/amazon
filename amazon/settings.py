@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "bootstrap5",
     "users",
     "products",
+    "profiles",
 ]
 
 MIDDLEWARE = [
