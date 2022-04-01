@@ -29,7 +29,7 @@
             </div>
             <div class="row py-3">
             <div class="col-6 ">
-                <span ><a href="{% url 'detail' i.pk %}"><button class="btn-detail"> Details </button></a></span>
+                <span ><a href="{% url 'detail' i.pk %}"><button class="btn-detail"> Detail </button></a></span>
               </div>
               <div class="col-6 text-end">
                 <span ><a href="{% url 'detail' i.pk %}"><button class="btn-detail"> Buy  </button></a></span>
@@ -41,10 +41,9 @@
  </div>
 {% endfor %}
 
-<!--paginator-->
 <div class="row text-center">
    <div class="col-12">
-{% if is_paginated %}
+
 
       {% if page_obj.has_previous %}
         <a class="btn-pag" href="?page=1">First</a>
@@ -64,12 +63,8 @@
         <a class="btn-pag mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
       {% endif %}
 
-    {% endif %}
     </div>
 </div>
-
-    </div>
-  </div>
 {% endblock %}
 
 

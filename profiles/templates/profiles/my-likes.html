@@ -3,13 +3,14 @@
 {% block content %}
 <p> Hello {{user.username}}</p>
 <p> Here is your saved items</p>
+
   {% for i in product %}
 <hr>
   {{i.title}}
 
 <br>
   {{i.short_details}}
-<a href="#"><button class="btn-detail me-1"> Remove </button></a>
+<a href="{% url 'del-fav' i.id %}"><button class="btn-detail me-1"> Remove </button></a>
 <hr>
 
 {% endfor %}

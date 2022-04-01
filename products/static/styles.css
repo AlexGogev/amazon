@@ -451,9 +451,9 @@ footer h6:after {
 
 }
 ::placeholder {
-    font-size: 10px;
+    font-size: 15px;
     padding-left: 10px;
-    font-style: italic;
+    font-style: normal;
 }
  .form-footer input[type="button"] {
     border: none;
@@ -518,5 +518,34 @@ a:hover {
   background-image: -ms-linear-gradient(top, #74bfed, #3463d9);
   background-image: -o-linear-gradient(top, #74bfed, #3463d9);
   background-image: linear-gradient(to bottom, #74bfed, #3463d9);
+  text-decoration: none;
+}
+
+
+/* btn-pag */
+
+.btn-pag {
+  background: #919cff;
+  background-image: -webkit-linear-gradient(top, #919cff, #2980b9);
+  background-image: -moz-linear-gradient(top, #919cff, #2980b9);
+  background-image: -ms-linear-gradient(top, #919cff, #2980b9);
+  background-image: -o-linear-gradient(top, #919cff, #2980b9);
+  background-image: linear-gradient(to bottom, #919cff, #2980b9);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Georgia;
+  color: #fafafa;
+  font-size: 15px;
+  padding: 3px 10px 3px 10px;
+  text-decoration: none;
+}
+.btn-pag:hover {
+  background: #c1bfe6;
+  background-image: -webkit-linear-gradient(top, #c1bfe6, #0d3652);
+  background-image: -moz-linear-gradient(top, #c1bfe6, #0d3652);
+  background-image: -ms-linear-gradient(top, #c1bfe6, #0d3652);
+  background-image: -o-linear-gradient(top, #c1bfe6, #0d3652);
+  background-image: linear-gradient(to bottom, #c1bfe6, #0d3652);
   text-decoration: none;
 }

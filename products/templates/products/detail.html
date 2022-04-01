@@ -16,9 +16,11 @@
             <div class="row py-3 text-start" >
             <div class="col-12 text-start">
 
-
-
-                <span ><a href="{% url 'add-to-fav' product.id %}"><button class="btn-detail me-1"> Add Favorite </button></a></span>
+            {% if fav  %}
+                <span ><a href="{% url 'add-to-fav' product.id %}"><button class="btn-detail me-1"> Remove Favorite </button></a></span>
+            {% else %}
+                <span ><a href="{% url 'add-to-fav' product.id %}"><button class="btn-detail me-1 "> Add Favorite </button></a></span>
+                {% endif %}
                 <span ><a href=""><button class="btn-detail "> Buy  </button></a></span>
               </div>
 

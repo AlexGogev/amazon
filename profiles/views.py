@@ -8,28 +8,31 @@ from django.contrib.auth.mixins import UserPassesTestMixin  # other people cant 
 from products.models import Product
 
 
-class My_Likes(LoginRequiredMixin, ListView):
-    model = Product
-    template_name = "profiles/my-likes.html"
-    context_object_name = "product"
-
-
-    def get_queryset(self):
-        return Product.objects.filter(favorite=self.request.user)
+@login_required
+def My_Likes(request):
+    new = Product.objects.filter(favorite=request.user)
+    return render(request, "profiles/my-likes.html", {"product" : new})
 
 
 @login_required
 def add_to_fav(request, id):
     post = get_object_or_404(Product, id=id)  # return item from Product and match id
+
     if post.favorite.filter(id=request.user.id): #check to see if already added
         post.favorite.remove(request.user)
     else:
         post.favorite.add(request.user)
     return redirect("detail", pk=post.id)
-    #return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
 
 
-
+@login_required
+def del_fav(request, id):
+    post = get_object_or_404(Product, id=id)  # return item from Product and match id
+    if post.favorite.filter(id=request.user.id): #check to see if already added
+        post.favorite.remove(request.user)
+    else:
+        post.favorite.add(request.user)
+    return redirect("profiles")
 
 
