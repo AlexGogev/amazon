@@ -4,5 +4,6 @@ from .views import *
 
 urlpatterns = [
     path("likes/", My_Likes.as_view(), name="profiles"),
-   # path("add-to-fav/<int:pk>", Add_To_Fav.as_view(), name="add-to-fav")
+    path('add-to-fav/<int:id>/', add_to_fav, name="add-to-fav"), #id , capture the post id
+
     ]

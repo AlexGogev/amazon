@@ -16,3 +16,6 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+    # set redirect add this is to allow reverse when creating and updating
+    def get_absolute_url(self):
+        return reverse("detail", kwargs={"pk": self.pk})
