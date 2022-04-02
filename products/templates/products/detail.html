@@ -1,27 +1,37 @@
+<title> Details </title>
 {% extends 'products/base.html' %}
 
 {% block content %}
 
 
-<div class="container p-5 m-5">
+<div class="container py-5 ">
     <div class="row">
-        <div class="col-4">
+        <div class="col-lg-4 col-sm-12">
             <img class="img-fluid " src="{{product.image}}">
         </div>
-        <div class="col-8 ps-5">
-            <p class="lead"> {{product.title}} </p>
-            <p class="fs-4"> {{product.short_details}} </p>
-            <p class="py-4 fs-5"> {{product.full_detail}} </p>
-            <p class=" fs-3 fw-normal">  Current Price £{{product.price}}</p>
+        <div class="col-lg-8 col-sm-12 ps-5">
+            <p class="title"><b>{{product.title}}</b> </p>
+
+            <p class="short_details py-5"> {{product.short_details}} </p>
+            <p> <b>About this product </b></p>
+            <p class="full_details pb-5"> {{product.full_detail}} </p>
+            {% if product.inside_box %}
+            <p> <b>What's inside the box </b></p>
+            <p class="inside_box pb-5"> {{product.inside_box}} </p>
+            {% endif %}
+
+            <p class="price">  Price £{{product.price}}</p>
+            <p class="rating">Rating {{product.review_rating}} </p>
+
             <div class="row py-3 text-start" >
-            <div class="col-12 text-start">
+            <div class="col-12 text-start pt-3">
 
             {% if fav  %}
                 <span ><a href="{% url 'add-to-fav' product.id %}"><button class="btn-detail me-1"> Remove Favorite </button></a></span>
             {% else %}
                 <span ><a href="{% url 'add-to-fav' product.id %}"><button class="btn-detail me-1 "> Add Favorite </button></a></span>
-                {% endif %}
-                <span ><a href=""><button class="btn-detail "> Buy  </button></a></span>
+            {% endif %}
+                <span ><a href="{{product.buy_link}}"><button class="btn-detail-buy "> Buy  </button></a></span>
               </div>
 
                 </div>

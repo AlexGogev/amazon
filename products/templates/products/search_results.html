@@ -12,42 +12,37 @@
 <p>We found {{object_list.count}} results </p>
 <ul>
   {% for i in object_list %}
-<section style="background-color: #eee;">
-  <div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6 col-xl-4">
-        <div class="card text-black">
-          {{i.title}}
-          <img
-            src="{{i.image}}"
-            class="card-img-top"
-            alt="Apple Computer"
-          />
-          <div class="card-body">
-            <div class="text-center">
-              <h5 class="card-title">Believing is seeing</h5>
-              <p class="text-muted mb-4">Apple pro display XDR</p>
-            </div>
-            <div>
-              <div class="d-flex justify-content-between">
-                <span>Pro Display XDR</span><span>$5,999</span>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span>Pro stand</span><span>$999</span>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span>Vesa Mount Adapter</span><span>$199</span>
-              </div>
-            </div>
-            <div class="d-flex justify-content-between total font-weight-bold mt-4">
-              <span>Total</span><span>$7,197.00</span>
-            </div>
-          </div>
+<div class="container py-5 ">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12">
+            <img class="img-fluid " src="{{i.image}}">
         </div>
-      </div>
+        <div class="col-lg-8 col-sm-12 ps-5">
+            <p class="title"><b>{{i.title}}</b> </p>
+
+            <p class="short_details py-5"> {{i.short_details}} </p>
+            <p> <b>About this product </b></p>
+            <p class="full_details pb-5"> {{i.full_detail}} </p>
+            {% if i.inside_box %}
+            <p> <b>What's inside the box </b></p>
+            <p class="inside_box pb-5"> {{i.inside_box}} </p>
+            {% endif %}
+
+            <p class="price">  Price £{{i.price}}</p>
+            <p class="rating">Rating {{i.review_rating}} </p>
+
+            <div class="row py-3 text-start" >
+            <div class="col-12 text-start pt-3">
+
+       <a href="{% url 'del-fav' i.id %}"><button class="btn-detail me-1"> Remove </button></a>
+                <span ><a href="{{product.buy_link}}"><button class="btn-detail-buy "> Buy  </button></a></span>
+              </div>
+
+                </div>
+        </div>
     </div>
-  </div>
-</section>
+
+</div>
   {% endfor %}
 </ul>
 

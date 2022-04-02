@@ -5,16 +5,16 @@ from django.shortcuts import reverse
 
 
 class Product(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=800)
     short_details = models.TextField()
     full_detail = models.TextField(blank=True, null=True)
-#   inside_box = models.TextField()
+    inside_box = models.TextField(default=None, blank=True)
     price = models.CharField(max_length=10)
     image = models.URLField(max_length=2048, blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     favorite = models.ManyToManyField(User, default=None, blank=True, related_name="favorite")
-#   review_rating = models.FloatField(blank=True, default=None)
-  # buy_link = models.URLField(max_length=2048, blank=True, null=True)
+    review_rating = models.CharField(max_length=20, default=None, blank=True)
+    buy_link = models.URLField(max_length=2048, blank=True, null=True)
     Choices = (
         ("Technology", "Technology"),
         ("Books", "Books"),

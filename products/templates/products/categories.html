@@ -5,12 +5,11 @@
            <div class="row justify-content-center ">
 
 {% for i in product %}
-
 <div class="col-md-6 col-lg-3 col-xl-4 py-2 ">
 
 
         <div class="card text-black ">
-<!--          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>-->
+         <a href="{% url 'detail' i.pk %}" class="title">
           <img
             src="{{i.image}}"
             class="card-img-top w-75 img-fluid m-5"
@@ -18,23 +17,26 @@
 
           />
           <div class="card-body">
-            <div class="text-center">
-              <h5 class="card-title">{{i.title}}</h5>
-              <p class="text-muted mb-4">{{i.short_details}}</p>
+            <div class="text-start">
+              <h5 class="card-title title pb-4" >{{i.title}}</h5>
+          </a>
             </div>
             <div>
-              <div class="d-flex justify-content-between">
-                <span>{{i.title}}</span><span> Price £{{i.price}}</span>
+              <div class="row text-start">
+                <div class="col-12 text-muted"> Price: {{i.price}}</div>
+                 <div class="col-12 text-muted"> User Rating: {{i.review_rating}} </div>
               </div>
             </div>
             <div class="row py-3">
-            <div class="col-6 ">
-                <span ><a href="{% url 'detail' i.pk %}"><button class="btn-detail"> Detail </button></a></span>
+            <div class="col-6 ps-2">
+                <span ><a href="{% url 'detail' i.pk %}"><button class="btn-detail"> Details </button></a></span>
               </div>
-              <div class="col-6 text-end">
-                <span ><a href="{% url 'detail' i.pk %}"><button class="btn-detail"> Buy  </button></a></span>
+              <div class="col-6 pe-2 text-end">
+                <span ><a href="{{i.buy_link}}"><button class="btn-detail-buy"> Buy  </button></a></span>
               </div>
                 </div>
+
+
           </div>
         </div>
 

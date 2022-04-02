@@ -1,19 +1,50 @@
+<title> My Likes </title>
 {% extends 'products/base.html' %}
 
 {% block content %}
-<p> Hello {{user.username}}</p>
-<p> Here is your saved items</p>
 
-  {% for i in product %}
-<hr>
-  {{i.title}}
+{% if product %}
 
-<br>
-  {{i.short_details}}
-<a href="{% url 'del-fav' i.id %}"><button class="btn-detail me-1"> Remove </button></a>
-<hr>
+{% for i in product %}
+<div class="container py-5 ">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12">
+            <img class="img-fluid " src="{{i.image}}">
+        </div>
+        <div class="col-lg-8 col-sm-12 ps-5">
+            <p class="title"><b>{{i.title}}</b> </p>
 
+           <p class="short_details py-5"> {{i.short_details}} </p>
+            <p> <b>About this product </b></p>
+            <p class="full_details pb-5"> {{i.full_detail}} </p>
+<!--            {% if i.inside_box %}-->
+<!--            <p> <b>What's inside the box </b></p>-->
+<!--            <p class="inside_box pb-5"> {{i.inside_box}} </p>-->
+<!--            {% endif %}-->
+
+            <p class="price">  Price £{{i.price}}</p>
+            <p class="rating">Rating {{i.review_rating}} </p>
+
+            <div class="row py-3 text-start" >
+            <div class="col-12 text-start pt-3">
+
+       <a href="{% url 'del-fav' i.id %}"><button class="btn-detail me-1"> Remove </button></a>
+                <span ><a href="{{product.buy_link}}"><button class="btn-detail-buy "> Buy  </button></a></span>
+              </div>
+
+                </div>
+        </div>
+    </div>
 {% endfor %}
-
+ {% else %}
+    <div class="container p-5">
+        <div class="container p-5 text-center">
+        <p class="display-5 p-3"> Hello {{user.username}}</p>
+        <p class="display-5 p-3"> Your favorite list is empty!</p>
+        <p class="display-5 p-3"><a href="{% url 'index' %}" class="display-5 p-3"> Visit the main page to start adding!</a></p>
+        </div>
+        <div class="conainer p-5"> <div>
+    </div>
+ {%endif%}
 
 {% endblock %}

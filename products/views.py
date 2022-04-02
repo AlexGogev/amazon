@@ -22,6 +22,7 @@ class HomePageView(ListView):
 class SearchResultsView(ListView): #https://learndjango.com/tutorials/django-search-tutorial
     model = Product
     template_name = 'products/search_results.html'
+
     def get_queryset(self): # new
         query = self.request.GET.get("q")
         object_list = Product.objects.filter(

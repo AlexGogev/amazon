@@ -20,6 +20,7 @@ def add_to_fav(request, id):
     post = get_object_or_404(Product, id=id)  # return item from Product and match id
 
     if post.favorite.filter(id=request.user.id): #check to see if already added
+        messages.success(request, f' {post.title} has been removed from Account tab')
         post.favorite.remove(request.user)
     else:
         post.favorite.add(request.user)
