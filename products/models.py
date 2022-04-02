@@ -8,11 +8,13 @@ class Product(models.Model):
     title = models.CharField(max_length=50)
     short_details = models.TextField()
     full_detail = models.TextField(blank=True, null=True)
+#   inside_box = models.TextField()
     price = models.CharField(max_length=10)
     image = models.URLField(max_length=2048, blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     favorite = models.ManyToManyField(User, default=None, blank=True, related_name="favorite")
-  # Buy_link = models.URLField(max_length=2048, blank=True, null=True)
+#   review_rating = models.FloatField(blank=True, default=None)
+  # buy_link = models.URLField(max_length=2048, blank=True, null=True)
     Choices = (
         ("Technology", "Technology"),
         ("Books", "Books"),

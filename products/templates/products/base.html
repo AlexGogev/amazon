@@ -305,6 +305,15 @@
       </div>
     </div>
   </nav>
+<!--messages-->
+{% if messages %}
+{% for message in messages %}
+  <div class="container text-center px-5 alert alert-{{message.tags}}">
+    {{message}}
+  </div>
+{% endfor %}
+{% endif %}
+<!--main content-->
 
   <div class="container">
     <article>
